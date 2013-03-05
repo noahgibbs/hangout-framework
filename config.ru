@@ -1,6 +1,10 @@
 use Rack::ContentType
 
+def output(text, options = {})
+  [ options[:status] || 200,
+    {}, [ text ].flatten ]
+end
+
 run proc {
-  [ 200, {},
-    [ "Hello, World." ] ]
+  output "Hello, world!"
 }
