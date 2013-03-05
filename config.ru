@@ -1,4 +1,6 @@
+use Rack::ContentType
+
 run proc {
-  [ 200, { "Content-type" => "text/html" },
+  [ 200, {},
     [ "Hello, World." ] ]
 }
