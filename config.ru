@@ -5,6 +5,11 @@ def output(text, options = {})
     {}, [ text ].flatten ]
 end
 
-run proc {
-  output "Hello, world!"
+run proc { |env|
+  path = env['PATH_INFO']
+  if path =~ %r{^/foo}
+    output "Hello, foo!"
+  else
+    output "Not found!", :status => 400
+  end
 }
