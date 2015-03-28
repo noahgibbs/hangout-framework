@@ -25,13 +25,23 @@ path = env['PATH_INFO']
 :app => lambda { |env| env['PATH_INFO'] =~ %r{^/foo} ? from_erb(template) : output "Not found!", :status => 400 }
 =end
 
+template = File.open("template.html.erb").read
 require 'erubis'
-template = "<p> A template! </p><% 10.times do %><p> Pretty cool! </p><% end %>"
+result = Erubis::Eruby.new(template).result
+@body = [result]
+@status = 200
+@header = {}
+@triplet = [@status, @header, @body]
+@app = lambda do |e| 
+  @triplet
+end
+
 class Options < Hash
   attr_writer :options	
 end
+
 options = Options.new
-options.store(:app, lambda { |e| [200, {}, ["#{Erubis::Eruby.new(template).result}"]]})
+options.store(:app, @app)
 options.store(:server, 'webrick')
 options.store(:Port, 3000)
 options.store(:Host, "0.0.0.0")

@@ -30,6 +30,7 @@ require 'erubis'
 
 template = "<p> A template! </p><% 10.times do %><p> Pretty cool! </p><% end %>"
 
+
 class Options < Hash
   attr_writer :options	
 end
