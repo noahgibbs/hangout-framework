@@ -1,7 +1,6 @@
 app = Rack::Builder.app do
-  use Rack::CommonLogger
   use Rack::ContentType
-  run lambda { |env| [200, {}, ['OK']] }
+  run lambda { |env| [200, {}, ['Hello, World']] }
 end
 
 run app

@@ -1,20 +1,9 @@
 require "rack"
 
-class Options < Hash
-  attr_writer :options
+app = Rack::Builder.new do
+	use Rack::ContentType
+  run proc {[200, {}, ["Hello, World"]]}
 end
-options = Options.new
-options.store(:app, lambda {|e| [200, {}, ['hello world']]})
-options.store(:server, 'webrick')
-options.store(:Port, 3000)
-options.store(:Host, "0.0.0.0")
 
-p options
-p options.instance_variables
-
-#Rack::Server.start(options hash of variables)
-
-rb = Rack::Builder.new
-rb.use Rack::ContentType
-
-Rack::Server.start  options
+options = {app: app, server: 'thin', Port: 9292, Host: "0.0.0.0"}
+Rack::Server.start options
