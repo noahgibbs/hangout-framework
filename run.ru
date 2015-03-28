@@ -24,11 +24,7 @@ class RubyHangout
 	end
 end
 
-app = Rack::Builder.new do
-	use Rack::ContentType
-  run RubyHangout
+use Rack::ContentType
+run RubyHangout
 	p self
-end
 
-options = {app: app, server: 'webrick', Port: 3000, Host: "0.0.0.0"}
-Rack::Server.start options
