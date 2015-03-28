@@ -1,9 +1,9 @@
 def output(text, options = {})
   [ options[:status] || 200, {}, [ text ].flatten ]
-	end
-	
+end
+
 class Options < Hash
-  attr_writer :options	
+  attr_writer :options
 end
 options = Options.new
 options.store(:app, lambda {|e| [200, {}, ['hello world']]})

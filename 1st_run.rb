@@ -1,7 +1,7 @@
 # Is this cryptic enough?
 # we make our own hash class called Options
 class Options < Hash
-  attr_writer :options	
+  attr_writer :options
 end
 
 options = Options.new

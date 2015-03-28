@@ -32,7 +32,7 @@ template = "<p> A template! </p><% 10.times do %><p> Pretty cool! </p><% end %>"
 
 
 class Options < Hash
-  attr_writer :options	
+  attr_writer :options
 end
 
 options = Options.new

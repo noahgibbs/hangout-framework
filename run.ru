@@ -16,15 +16,15 @@ class RubyHangout
     def call(env)
       path = env['PATH_INFO']
       if path =~ %r{^/run}
-         from_erb "./template.html.erb"
+        from_erb "./template.html.erb"
       else
         output "Not found!", :status => 400
       end
     end
-	end
+  end
 end
 
 use Rack::ContentType
 run RubyHangout
-	p self
+p self
 

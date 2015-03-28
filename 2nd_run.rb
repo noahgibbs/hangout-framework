@@ -1,7 +1,7 @@
 require "rack"
 
 class Options < Hash
-  attr_writer :options	
+  attr_writer :options
 end
 options = Options.new
 options.store(:app, lambda {|e| [200, {}, ['hello world']]})
