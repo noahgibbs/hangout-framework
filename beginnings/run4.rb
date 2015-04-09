@@ -10,11 +10,11 @@ end
 require "rack"
 
 app = Rack::Builder.new do
-	use Rack::ContentType
+  use Rack::ContentType
   run proc {output template}
 end
 
-options = {app: app, server: 'thin', Port: 9292, Host: "0.0.0.0"}
+options = {app: app, server: 'webrick', Port: 9393, Host: "0.0.0.0"}
 Rack::Server.start options
 
-# http://localhost:9292
+# http://localhost:9393

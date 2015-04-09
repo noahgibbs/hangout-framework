@@ -30,5 +30,5 @@ app = Rack::Builder.new do
   p self
 end
 
-options = {app: app, server: 'webrick', Port: 9292, Host: "0.0.0.0"}
+options = {app: app, server: 'webrick', Port: 9393, Host: "0.0.0.0"}
 Rack::Server.start options
